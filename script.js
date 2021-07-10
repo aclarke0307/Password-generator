@@ -1,11 +1,17 @@
 // Assignment code here
+function getRandom(arr){
+  var randomIndex = Math.floor(Math.random() * arr)
+  var randomElement = arr[randomIndex];
+  return randomElement;
+}
 function generatePassword() {
   var numChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var upperCaseChar =["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var specialChar =[" ", "#", "$", "%", "&", "( )", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\ ","|" ]; 
-  var passwordArray = [ ];
-  var password ="";
+  var passwordArray = [];
+  var letterArray =[];
+  var passwordResult =[];
 
 
   //Ask the length of password
@@ -22,29 +28,41 @@ function generatePassword() {
 
   if(confirmSpecial){
      passwordArray = passwordArray.concat(specialChar);
+     console.log("special charcters: " + passwordArray)
+     letterArray.push(getRandom(specialChar));
   }
 
   var confirmNumeric = window.confirm('Click OK to confirm including numeric characters');
   if(confirmNumeric){
     passwordArray = passwordArray.concat(numChar);
+    console.log("numbers: " + passwordArray)
+    letterArray.push(getRandom(numChar));
   }
 
    var confirmLowerCase = window.confirm('Click OK to confirm including lowercase characters');
    if(confirmLowerCase){
      passwordArray = passwordArray.concat(lowerCaseChar);
+     console.log("lowercase: " + passwordArray)
+     letterArray.push(getRandom(lowerCaseChar));
    }
 
   var confirmUpperCase = window.confirm('Click OK to confirm including Uppercase characters');
     if(confirmUpperCase){
       passwordArray = passwordArray.concat(upperCaseChar);
+      console.log("uppercase: "+ passwordArray)
+      letterArray.push(getRandom(upperCaseChar));
     }
 
-    for(var i=0; i > promptCharacterNumber; i++){
-      Password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
+    for(var i=0; i < promptCharacterNumber.length; i++){
+      var possiblePassword = getRandom(passwordArray);
+      passwordResult.push(possiblePassword)
+      console.log(passwordResult)
     }
-    return passwordArray;
-
-}
+    for (var i =0; i < letterArray.length; i++){
+      passwordResult[i] = letterArray[i];
+    }
+    return passwordResult.join("");
+} 
 
 
 // Get references to the #generate element
