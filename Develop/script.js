@@ -5,7 +5,7 @@ function generatePassword() {
   var upperCaseChar =["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var specialChar =[" ", "#", "$", "%", "&", "( )", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\ ","|" ]; 
   var passwordArray = [ ];
-  var thePassword ="";
+  var password ="";
 
 
   //Ask the length of password
@@ -40,9 +40,9 @@ function generatePassword() {
     }
 
     for(var i=0; i > promptCharacterNumber; i++){
-      thePassword += passwordArray[Math.floor(Math.random() * passwordArray.length)];
+      Password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
     }
-    return thePassword;
+    return passwordArray;
 
 }
 
